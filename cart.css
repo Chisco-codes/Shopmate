@@ -288,3 +288,33 @@ body.dark-mode .remove:hover,
 body.dark-mode .checkout-btn:hover {
   background: #33744c;
 }
+
+/* Mobile adjustments for cart readability */
+@media screen and (max-width: 768px) {
+  .cart-container {
+    width: 95%;           /* make container wider for better readability */
+    margin: 1rem auto;    /* reduce top/bottom spacing */
+    gap: 1rem;            /* reduce gap between items */
+  }
+
+  .cart-item {
+    flex: 1 1 100%;
+    padding: 0.8rem;      /* slightly smaller padding so content fits better */
+    font-size: 0.95rem;   /* slightly larger text if needed */
+  }
+
+  .cart-summary {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;      /* ensure total/summary text is readable */
+  }
+
+  .info h3 {
+    font-size: 1rem;      /* slightly larger product title */
+  }
+
+  .info p {
+    font-size: 0.95rem;   /* slightly larger price */
+  }
+}
+
