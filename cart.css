@@ -22,6 +22,7 @@ header {
   color: #fff;
   font-size: 1.8rem;
   font-weight: 700;
+  position: relative; /* for mobile nav positioning */
 }
 
 header h1 span {
@@ -32,7 +33,10 @@ header h1 span {
 nav {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   padding: 1rem 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 #theme-toggle {
@@ -52,6 +56,63 @@ nav {
   transform: scale(1.05);
 }
 
+/* Hamburger menu button */
+.hamburger {
+  display: none; /* hidden on desktop */
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff; /* visible on dark header */
+}
+
+/* Mobile nav links */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Responsive adjustments for mobile */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block; /* show hamburger */
+  }
+
+  .nav-links {
+    display: none; /* hide menu by default */
+    flex-direction: column;
+    background: #0f172a; /* dark menu */
+    position: absolute;
+    top: 60px; /* adjust for header height */
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 8px;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex; /* show menu when clicked */
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
 /* ================= CART CONTAINER ================= */
 .cart-container {
   width: 90%;
@@ -63,7 +124,14 @@ nav {
   flex-wrap: wrap;
 }
 
-/* ================= CART ITEM ================= */
+/* ================= CART ITEMS ================= */
+.cart-items {
+  flex: 1 1 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .cart-item {
   display: flex;
   background: #fff;
@@ -71,7 +139,6 @@ nav {
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
   gap: 1.2rem;
-  flex: 1 1 60%;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -130,13 +197,11 @@ nav {
 
 /* ================= CART SUMMARY ================= */
 .cart-summary {
+  flex: 0 0 300px;
   background: #fff;
   padding: 1.5rem;
   border-radius: 12px;
-  flex: 1 1 30%;
-  min-width: 280px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  height: fit-content;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   position: sticky;
   top: 20px;
 }
@@ -222,87 +287,4 @@ body.dark-mode .checkout-btn {
 body.dark-mode .remove:hover,
 body.dark-mode .checkout-btn:hover {
   background: #33744c;
-}
-
-.cart-container {
-  width: 90%;
-  max-width: 1100px;
-  margin: 2rem auto;
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
-  flex-wrap: wrap; /* for mobile responsiveness */
-}
-
-.cart-items {
-  flex: 1 1 600px; /* grow/shrink with minimum width */
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.cart-summary {
-  flex: 0 0 300px;
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 20px; /* stays visible when scrolling */
-}
-
-@media screen and (max-width: 768px) {
-  .cart-container {
-    flex-direction: column;
-  }
-  .cart-summary {
-    position: relative; /* disables sticky for mobile */
-    width: 100%;
-  }
-}
-
-
-    
-/* Hamburger menu button */
-.hamburger {
-  display: none; /* hidden by default on desktop */
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: inherit;
-}
-
-/* Mobile nav links */
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-}
-
-/* Responsive adjustments for mobile */
-@media screen and (max-width: 768px) {
-  .hamburger {
-    display: block; /* show hamburger on mobile */
-  }
-
-  .nav-links {
-    display: none; /* hide menu by default */
-    flex-direction: column;
-    background: #0f172a; /* dark background for menu */
-    position: absolute;
-    top: 60px; /* adjust based on header height */
-    right: 0;
-    width: 200px;
-    padding: 1rem;
-    border-radius: 8px;
-  }
-
-  .nav-links.active {
-    display: flex; /* show menu when hamburger is clicked */
-  }
-
-  .nav-links ul {
-    flex-direction: column;
-    gap: 1rem;
-  }
 }

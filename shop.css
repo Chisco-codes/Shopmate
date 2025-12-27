@@ -260,7 +260,7 @@ body.dark-mode .product-card button:hover {
   background: none;
   border: none;
   cursor: pointer;
-  color: inherit;
+  color: #fff;
 }
 
 /* Mobile nav links */
