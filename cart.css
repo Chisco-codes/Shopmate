@@ -260,3 +260,49 @@ body.dark-mode .checkout-btn:hover {
     width: 100%;
   }
 }
+
+
+    
+/* Hamburger menu button */
+.hamburger {
+  display: none; /* hidden by default on desktop */
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Mobile nav links */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Responsive adjustments for mobile */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block; /* show hamburger on mobile */
+  }
+
+  .nav-links {
+    display: none; /* hide menu by default */
+    flex-direction: column;
+    background: #0f172a; /* dark background for menu */
+    position: absolute;
+    top: 60px; /* adjust based on header height */
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .nav-links.active {
+    display: flex; /* show menu when hamburger is clicked */
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
